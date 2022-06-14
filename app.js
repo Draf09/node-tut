@@ -51,12 +51,39 @@
 //     // console.log(req)
 //     // res.write()
 //     if (req.url === '/about') {
+//         for (let i = 0; i < 1000; i++) {
+//             for (let j = 0; j < 1000; j++) {
+//                 console.log(`${i} ${j}`)
+//         }
 //         res.end('This is our history')
 //     }
 // })
 
 // server.listen(5000)
 
-const _ = require('lodash')
+// const getText = (path) => {
+//     return new Promise((resolve, reject)) => {
+//         readFile(path, 'utf8', (err, data) => {
+//             if (err) {
+//                 reject(err)
+//             } else {
+//                 resolve(data 
+//             }
+//         })
+//     })
+// }
 
-const items
+
+
+http
+    .createServer(function (req, res){
+        const fileStream = fs.createReadStream('./content/big.txt', 'utf8')
+        fileStream.on('open', ()=>{
+            fileStream.pipe(res)
+        })
+        fileStream.on('error',(err)=>{
+            res.end(err)
+        })
+    })
+    .listen(5000)
+
